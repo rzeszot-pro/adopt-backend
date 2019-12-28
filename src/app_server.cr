@@ -4,11 +4,15 @@ class AppServer < Lucky::BaseAppServer
       Lucky::ForceSSLHandler.new,
       Lucky::HttpMethodOverrideHandler.new,
       Lucky::LogHandler.new,
-      Lucky::SessionHandler.new,
-      Lucky::FlashHandler.new,
+
+      # Disabled in API mode, but can be enabled if you need them:
+      # Lucky::SessionHandler.new,
+      # Lucky::FlashHandler.new,
       Lucky::ErrorHandler.new(action: Errors::Show),
       Lucky::RouteHandler.new,
-      Lucky::StaticFileHandler.new("./public", false),
+
+      # Disabled in API mode:
+      # Lucky::StaticFileHandler.new("./public", false),
       Lucky::RouteNotFoundHandler.new,
     ] of HTTP::Handler
   end

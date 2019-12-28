@@ -5,6 +5,5 @@ spawn do
 end
 
 Spec.after_suite do
-  LuckyFlow.shutdown
   app_server.close
 end
