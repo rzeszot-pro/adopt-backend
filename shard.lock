@@ -8,6 +8,10 @@ shards:
     github: luckyframework/avram
     version: 0.12.2
 
+  bindata:
+    github: spider-gazelle/bindata
+    version: 1.2.0
+
   blank:
     github: kostya/blank
     version: 0.1.0
@@ -42,7 +46,7 @@ shards:
 
   jwt:
     github: crystal-community/jwt
-    version: 1.1.2
+    version: 1.4.0
 
   lucky:
     github: luckyframework/lucky
