@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  container-job:
+  build:
     runs-on: ubuntu-latest
 
     services:
@@ -34,3 +34,5 @@ jobs:
       run: shards install
     - name: Run specs
       run: crystal spec
+      env:
+        DATABASE_URL: "postgres://postgres:postgres@localhost:${{ job.services.postgres.ports['5432'] }}/postgres_test"
