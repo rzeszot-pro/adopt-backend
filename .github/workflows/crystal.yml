@@ -24,6 +24,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: Setup Postgres
+      uses: harmon758/postgresql-action@v1
+      with:
+        postgresql user: 'postgres'
+        postgresql password: 'postgres'
     - name: Install dependencies
       run: shards install
     - name: Run tests
