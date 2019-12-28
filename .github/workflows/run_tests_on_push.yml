@@ -18,7 +18,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres_test
+          POSTGRES_DB: adopt_test
         ports:
         - 5432/tcp
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
@@ -34,5 +34,3 @@ jobs:
       run: shards install
     - name: Run specs
       run: crystal spec
-      env:
-        DATABASE_URL: "postgres://postgres:postgres@localhost:${{ job.services.postgres.ports['5432'] }}/postgres_test"
