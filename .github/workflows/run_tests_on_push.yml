@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image:  node:10.16-jessie
+      image: crystallang/crystal
 
     services:
       postgres:
@@ -27,11 +27,12 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-      working-directory: ./postgres
-    - run: node client.js
-      working-directory: ./postgres
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Install dependencies
+      run: shards install
+    - name: Run specs
+      run: crystal spec
       env:
         POSTGRES_HOST: postgres
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
