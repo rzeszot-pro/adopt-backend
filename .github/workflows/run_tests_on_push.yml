@@ -17,7 +17,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get -yqq install libpq-dev
+        apt-get -yqq install libpq-dev
         shards install
 
     - name: Run tests
