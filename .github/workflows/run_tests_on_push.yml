@@ -14,7 +14,6 @@ jobs:
       postgres:
         image: postgres:10.8
         env:
-          POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
@@ -29,7 +28,7 @@ jobs:
       run: shards install
     - name: Run tests
       env:
-        POSTGRES_HOST: localhost
+        POSTGRES_HOST: postgres
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
