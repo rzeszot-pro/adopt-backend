@@ -1,0 +1,13 @@
+name: adopt
+version: 0.1.0
+
+authors:
+  - Damian Rzeszot <damian.rzeszot@gmail.com>
+
+targets:
+  adopt:
+    main: src/adopt.cr
+
+crystal: 0.32.0
+
+license: MIT
