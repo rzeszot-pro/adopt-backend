@@ -8,7 +8,7 @@ AppDatabase.configure do |settings|
 
     settings.url = ENV["DATABASE_URL"]? || Avram::PostgresURL.build(
       database: database_name,
-      hostname: ENV["POSTGRES_HOST"]? || "localhost",
+      hostname: ENV["POSTGRES_HOST"]? || "postgres",
       username: ENV["POSTGRES_USER"]? || "postgres",
       password: ENV["POSTGRES_PASSWORD"]? || "postgres",
       port: ENV["POSTGRES_PORT"]? || "5432"

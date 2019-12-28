@@ -4,26 +4,26 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     container:
       image: crystallang/crystal
 
-    steps:
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
+    steps:
     - name: Checkout
       uses: actions/checkout@v1
-
     - name: Install dependencies
-      run: |
-        apt-get install postgresql postgresql-contrib
-        shards install
-
+      run: shards install
     - name: Run tests
-      env:
-        POSTGRES_HOST: localhost
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_PORT: 5432
       run: crystal spec
