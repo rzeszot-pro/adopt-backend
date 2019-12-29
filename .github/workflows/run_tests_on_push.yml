@@ -35,4 +35,4 @@ jobs:
     - name: Run specs
       run: crystal spec
       env:
-        DATABASE_URL: "postgres://postgres:postgres@localhost:${{ job.services.postgres.ports['5432'] }}/postgres_test"
+        DATABASE_URL: "postgres://postgres:postgres@localhost:${{ job.services.postgres.ports['5432'] }}/adopt_test"
