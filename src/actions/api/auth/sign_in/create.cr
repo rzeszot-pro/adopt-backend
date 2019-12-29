@@ -1,4 +1,4 @@
-class Api::SignIns::Create < ApiAction
+class Api::SignIn::Create < ApiAction
   include Api::Auth::SkipRequireAuthToken
 
   route do
