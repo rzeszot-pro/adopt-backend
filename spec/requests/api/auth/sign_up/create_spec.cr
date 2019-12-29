@@ -1,9 +1,9 @@
 require "../../../spec_helper"
 
-describe Api::SignUp::Create do
+describe Api::Auth::SignUp::Create do
   it "creates user on sign up" do
     UserToken.stub_token("fake-token") do
-      response = AppClient.exec(Api::SignUp::Create, user: valid_params)
+      response = AppClient.exec(Api::Auth::SignUp::Create, user: valid_params)
 
       response.should send_json(200, token: "fake-token")
       new_user = UserQuery.first
@@ -14,7 +14,7 @@ describe Api::SignUp::Create do
   it "returns error for invalid params" do
     invalid_params = valid_params.merge(password_confirmation: "wrong")
 
-    response = AppClient.exec(Api::SignUp::Create, user: invalid_params)
+    response = AppClient.exec(Api::Auth::SignUp::Create, user: invalid_params)
 
     UserQuery.new.select_count.should eq(0)
     response.should send_json(
