@@ -1,5 +1,6 @@
 class Api::Pick::Index < ApiAction
   route do
-    plain_text "Render something in Pick::Index"
+    all_animals = AnimalQuery.all
+    json AnimalSerializer.for_collection(all_animals)
   end
 end
