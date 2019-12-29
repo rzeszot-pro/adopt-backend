@@ -9,6 +9,8 @@ class ErrorSerializer < BaseSerializer
   end
 
   def render
-    {message: @message, param: @param, details: @details}
+    hash = { "message" => @message, "details" => @details }
+    hash["param"] = @param unless @param.nil?
+    hash
   end
 end
