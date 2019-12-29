@@ -1,8 +1,8 @@
-class UserSerializer < Lucky::Serializer
+class UserSerializer < BaseSerializer
   def initialize(@user : User)
   end
 
   def render
-    {email: @user.email}
+    { email: @user.email }
   end
 end
