@@ -27,7 +27,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Install dependencies
-      run: shards install
+      run: |
+        curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+        sudo apt install crystal libyaml-dev
+        shards install
     - name: Run specs
       run: crystal spec
       env:
