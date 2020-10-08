@@ -6,7 +6,8 @@ var env = try Environment.detect()
 try LoggingSystem.bootstrap(from: &env)
 
 let app = Application(env)
-
+app.middleware = .init()
+app.middleware.use(ErrorMiddleware.adopt(environment: env))
 
 try! app.wtf.use(url: "xxx")
 
