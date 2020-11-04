@@ -26,7 +26,7 @@ extension Application {
             try WhatTheFuck(application: application).use(url: url)
         }
 
-        func postgress(logger: Logger, on eventLoop: EventLoop) -> PostgresDatabase {
+        public func postgress(logger: Logger, on eventLoop: EventLoop) -> PostgresDatabase {
             WhatTheFuck(application: application).postgress(logger: logger, on: eventLoop)
         }
     }
